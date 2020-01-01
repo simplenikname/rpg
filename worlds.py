@@ -1,5 +1,5 @@
 from abc import abstractmethod
-import random import choice
+from random import choice
 
 class Abil(dict): # Интерфейс способностей
     def __init__(self):
