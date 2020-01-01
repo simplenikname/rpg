@@ -1,9 +1,8 @@
-from worlds import world_templates, dummy, battle_classes  # объект шаблон
+from worlds import world_templates, dummy, battle_classes, abils  # объект шаблон
 from random import choice
-from os import system
+from os import system # system('clear')
 
-
-class LevelHistory(dict):
+class LevelHistory(dict): # Класс закончен
     def __init__(self, level):
         self.level = level
         self.all_actons = []
@@ -11,7 +10,7 @@ class LevelHistory(dict):
         self.recent_action_length = 5
         self.recent_action: str
 
-    def write(self, action):
+    def write(self, action: str):
         self.all_actons.append(action)
 
     def __getattr__(self, attr):
@@ -21,7 +20,7 @@ class LevelHistory(dict):
 
 
 # класс реализующий отображение списка для выбора элемента(-ов)
-class Menu:
+class Menu: # Класс закончен
     def __init__(self, values: dict, item: str):
         self.values = values
         self.item = item
@@ -62,7 +61,7 @@ class Player(GameObject):
         self.name = name
         self.btl_class = btl_class
 
-    def turn(self) -> str:
+    def turn(self) -> str: # TODO: сделать адекватный список действий
         _actions = {}
         for n, i in enumerate(self.abils):
             _actions[n] = i
@@ -88,7 +87,7 @@ class Enemy(GameObject):  # TODO: сделать нормальный ИИ
 class Game:
     def __init__(self, difficult: int):
         self.worlds: list = [World(i, self) for i in world_templates]
-        self.difficult = difficult
+        # self.difficult = difficult
 
     def _setupPlayer(self):  # TODO: можно реализовать лучше?
         player_name = input('Введите имя: ')
@@ -102,7 +101,7 @@ class Game:
         ])
 
     def startGame(self, mode):
-        self.mode = mode
+        # self.mode = mode
         # создание и настройка игрока
         self._setupPlayer()
         # начало игры
@@ -122,7 +121,7 @@ class World(dict):  # TODO: добавить больше настроек
         self.game = game
         self.player = self.game.player
         self.levels = [Level(self, i + 1) for i in range(5)]
-        self.dead_enemies = []
+        # self.dead_enemies = []
 
     def enter(self):
         for i in self.levels:
