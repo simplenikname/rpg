@@ -43,7 +43,7 @@ class Parry(Abil):
         super().__init__()
         self.info = self.__doc__
 
-class CritAttack(self):
+class CritAttack(Abil):
     # asdasdasdsa
     def __init__(self):
         super().__init__()
@@ -52,7 +52,7 @@ class CritAttack(self):
     def use(self):
         pass
 
-class Shild(self):
+class Shild(Abil):
     # asdasdasdsa
     def __init__(self):
         super().__init__()
@@ -122,7 +122,7 @@ world_templates = [
                 'name': 'Злой кролик',
                 'max_health': 10,
                 'max_energy': -1,  # -1 == бесконечность
-                'damage_rng': r(1, 3)  # диапазон чисел от числа A до числа B
+                'damage_rng': r(1, 3),  # диапазон чисел от числа A до числа B
                 'abils' : [Attack()]
             },
             {

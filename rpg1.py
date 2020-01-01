@@ -86,6 +86,8 @@ class Enemy(GameObject):  # TODO: сделать нормальный ИИ
 # класс игры
 class Game:
     def __init__(self, difficult: int):
+        # создание и настройка игрока
+        self._setupPlayer()
         self.worlds: list = [World(i, self) for i in world_templates]
         # self.difficult = difficult
 
@@ -97,13 +99,11 @@ class Game:
             99: 'Бог'
         }
         self.player = Player(player_name, battle_classes[
-            class_choose[Menu(class_choose).show()]
+            class_choose[Menu(class_choose, 'класс').show()]
         ])
 
     def startGame(self, mode):
         # self.mode = mode
-        # создание и настройка игрока
-        self._setupPlayer()
         # начало игры
         for i in self.worlds:
             i.enter()
